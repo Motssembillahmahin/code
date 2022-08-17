@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> generatPrimes(int N)
+{
+    vector<bool> composite(N+1,false);
+    vector<int> primes;
+    for(int i = 2; i* i <=N ; i++)
+    {
+    if(composite[i] == 0)
+    {
+        for (int j = i * i; j <= N; j+=i)
+        {
+        composite[j] = true ;
+        }
+    }
+
+    }
+    for (int i = 2;i <=N ; i++)
+    {
+        if(composite[i] == 0)
+        {
+            primes.push_back(i);
+        }
+    }
+    return primes;
+}
+
+int main()
+{
+  auto primes = generatPrimes(100);
+  for(auto it : primes)
+  {
+    cout << it <<" ";
+  }
+  return 0;
+}
