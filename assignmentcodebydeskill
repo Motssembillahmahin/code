@@ -1,0 +1,217 @@
+1.Write a program to reverse a string with recursion.
+Solution :
+#include<bits/stdc++.h>
+using namespace std;
+void reverse(string &str, int k)
+{
+    static int i = 0;
+ 
+    if (k == str.length()) {
+        return;
+    }
+ 
+    reverse(str, k + 1);
+ 
+    if (i <= k) {
+        swap(str[i++], str[k]);
+    }
+}
+ 
+int main()
+{
+    string str = "mahin";
+    
+    reverse(str, 0);
+    cout << str;
+  return 0;
+}
+Output niham
+2. Write a program to detect whether a string is a palindrome or not with recursion
+Solution :
+#include <bits/stdc++.h>
+using namespace std;
+ 
+bool isPalRec(char str[],
+int s, int e)
+{
+ 
+if (s == e)
+return true;
+ 
+if (str[s] != str[e])
+return false;
+ 
+if (s < e + 1)
+return isPalRec(str, s + 1, e - 1);
+ 
+return true;
+}
+ 
+bool isPalindrome(char str[])
+{
+int n = strlen(str);
+ 
+if (n == 0)
+return true;
+ 
+return isPalRec(str, 0, n - 1);
+}
+ 
+ 
+int main()
+{
+char str[] = "mahin";
+ 
+if (isPalindrome(str))
+cout << "Yes";
+else
+cout << "No";
+ 
+return 0;
+}
+ Test Output -No
+ 
+
+
+3. Write a program to find the n-th factorial of an integer (0 <= n <= 20) with recursion
+Solution :
+#include<bits/stdc++.h>
+using namespace std;
+long long fact = 1.0;
+long long Factorial(int n)
+{
+    if(n == 0) return 1;
+    for(int i = 1;i <= n;i++)
+    {
+        fact *=i;
+    }
+}
+int main()
+{
+    int n;
+    cin >> n;
+    Factorial(n);
+    cout<<fact<<"\n";
+ 
+    return 0;
+}
+Test input – 20
+Test output – 2432902008176640000
+
+4. Given two strings A and B, write a program to find if A is a subsequence of B with recursion
+Solution :
+#include <bits/stdc++.h>
+using namespace std;
+void printSubsequences(int arr[], int index,
+vector<int> &subarr,int n)
+{
+
+if (index == n)
+{
+for (auto it:subarr){
+cout << it << " ";
+ 
+}
+if(subarr.size()==0)
+cout<<"{}";
+ 
+cout<<endl;
+return;
+ 
+ 
+}
+else
+{
+
+subarr.push_back(arr[index]);
+ 
+ 
+printSubsequences(arr, index + 1, subarr,n);
+ 
+ 
+subarr.pop_back();
+ 
+printSubsequences(arr, index + 1, subarr,n);
+}
+ 
+}
+ 
+int main()
+{
+int arr[]={1, 2, 3};
+int n=sizeof(arr)/sizeof(arr[0]);
+vector<int> vec;
+ 
+ 
+printSubsequences(arr, 0, vec,n);
+ 
+return 0;
+}
+Test Output --
+1 2 3
+1 2
+1 3
+1
+2 3
+2
+3
+{ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. Given an integer N, print from 1 to N with recursion
+Solution :-
+#include<bits/stdc++.h>
+using namespace std;
+void printNumber(int n)
+{
+    if(n >= 1)
+        printNumber(n - 1);
+        else
+            return;
+    cout<< n <<endl;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    printNumber(n);
+    return 0;
+}
+
+
+
+
+
+Test Input – 10
+Test Output-
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+
+
+
+
+
+6. Given an integer N, count the total number of divisors of N with recursion. (1 <= N <= 10^8)
+Solution :-
